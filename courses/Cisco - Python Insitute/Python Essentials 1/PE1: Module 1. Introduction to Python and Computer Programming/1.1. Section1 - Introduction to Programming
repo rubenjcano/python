@@ -1,0 +1,70 @@
+# 1.1 — Introduction to Programming
+
+> 📖 Part of: Python Essentials 1 · Module 1
+
+---
+
+## How a computer program works
+
+A computer can only perform extremely simple operations (like adding or dividing) but does them very fast and repeatedly. A program is a sequence of instructions that tells the computer what to do step by step — without it, a computer is useless.
+
+---
+
+## Natural languages vs. programming languages
+
+- **Natural languages** — human languages that evolved naturally over time (English, Spanish, etc.)
+- **Machine language** — the computer's native language, made up of very simple commands (an **instruction list / IL**)
+- **High-level programming languages** — a bridge between humans and machines; readable by humans, executable by computers
+
+A program written in a high-level language is called **source code**, stored in a **source file**.
+
+---
+
+## What makes a language?
+
+Every language — natural or programming — is built on 4 elements:
+
+| Element | What it means |
+|---|---|
+| **Alphabet** | The set of symbols used to build words |
+| **Lexis** | The dictionary — the set of valid words |
+| **Syntax** | Rules for forming valid sentences/statements |
+| **Semantics** | Rules that determine if a statement makes sense |
+
+A programming error can happen at any of these levels.
+
+---
+
+## Compilation vs. Interpretation
+
+Two ways to translate source code into machine language:
+
+| | Compilation | Interpretation |
+|---|---|---|
+| **How** | Translates the entire program once into an executable file | Translates and executes the code line by line, each time it runs |
+| **Speed** | Faster at runtime | Slower at runtime |
+| **Portability** | Distributes a compiled file (e.g. `.exe`) | Requires the interpreter on every machine |
+| **Error detection** | All at once before running | Stops at the first error found during execution |
+| **Examples** | C, C++, Go | Python, JavaScript, Ruby |
+
+---
+
+## How the Python interpreter works
+
+1. Reads the source code top to bottom, left to right
+2. Checks each line for correctness (alphabet → lexis → syntax → semantics)
+3. If an error is found → stops and shows an error message
+4. If a line is correct → executes it immediately
+5. Moves to the next line
+
+> ⚠️ Error messages can be misleading — the reported location may be slightly after the actual cause.
+
+---
+
+## Key Takeaways
+
+- A program is a list of instructions that tells a computer what to do
+- Computers only understand machine language — high-level languages need to be translated
+- Python is an **interpreted language** — translated line by line at runtime
+- Python is **free** and requires an interpreter to run
+- Interpreted languages are often called **scripting languages** and their programs **scripts**
