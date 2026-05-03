@@ -1,6 +1,7 @@
 # 🐍 Python Essentials 1 — Course Overview
 
 > 📖 Based on: [Python Essentials 1 — OpenEDG Python Institute x Cisco Networking Academy](https://pythoninstitute.org/)
+
 > Prepares for: [PCEP – Certified Entry-Level Python Programmer](https://pythoninstitute.org/certification/pcep-certification-entry-level/)
 
 ---
@@ -60,5 +61,3 @@ Writing reusable code with functions, working with more complex data structures,
 - Stands out on a CV for entry-level developer or data roles
 - Interim step toward **PCAP – Certified Associate in Python Programming**
 - Starting point for a career in software development and data engineering
-
-> 🔗 More info: [www.pythoninstitute.org](https://pythoninstitute.org)
