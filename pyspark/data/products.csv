@@ -1,0 +1,9 @@
+product_id,product_name,category,price
+1,Laptop,Electronics,1200.00
+2,Chair,Furniture,200.00
+3,Phone,Electronics,800.00
+4,Desk,Furniture,350.00
+5,Headphones,Electronics,250.00
+6,Monitor,Electronics,500.00
+7,Bookshelf,Furniture,180.00
+8,Keyboard,Electronics,120.00

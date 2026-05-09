@@ -57,6 +57,75 @@ The **Spark UI** at `localhost:8080` is very useful — it lets you monitor runn
 
 ---
 
+## RDD — Resilient Distributed Dataset
+
+An RDD is the **fundamental data structure of Spark**. Everything else (DataFrames, Datasets) is built on top of it.
+
+### What it is
+
+An RDD is an immutable, distributed collection of objects spread across the nodes of a cluster. Breaking down the name:
+
+| Word | Meaning |
+|---|---|
+| **Resilient** | Fault-tolerant — if a partition is lost, Spark can recompute it from the original data |
+| **Distributed** | Data is split into partitions and spread across worker nodes |
+| **Dataset** | A collection of records (can be anything — strings, tuples, objects) |
+
+### How it works
+
+When you create an RDD, Spark splits the data into **partitions** and assigns each partition to a worker node. Operations run in parallel across all partitions.
+
+```
+RDD
+├── Partition 1  →  Worker Node 1
+├── Partition 2  →  Worker Node 2
+└── Partition 3  →  Worker Node 3
+```
+
+### Transformations vs Actions
+
+This is one of the most important concepts in Spark — operations on RDDs are either **lazy transformations** or **eager actions**.
+
+**Transformations** — define a new RDD, but do nothing yet:
+- `map()` — apply a function to each element
+- `filter()` — keep elements matching a condition
+- `flatMap()` — like map, but flattens the result
+- `reduceByKey()` — group by key and reduce values
+
+**Actions** — trigger the actual computation:
+- `collect()` — return all elements to the driver
+- `count()` — return the number of elements
+- `first()` — return the first element
+- `take(n)` — return the first n elements
+- `saveAsTextFile()` — write to disk
+
+```python
+rdd = sc.parallelize([1, 2, 3, 4, 5])
+
+# Transformations — nothing runs yet
+evens = rdd.filter(lambda x: x % 2 == 0)
+squared = evens.map(lambda x: x ** 2)
+
+# Action — this triggers everything above
+result = squared.collect()  # [4, 16]
+```
+
+### RDD vs DataFrame
+
+In modern PySpark you will mostly use **DataFrames**, not RDDs directly. Here's why:
+
+| | RDD | DataFrame |
+|---|---|---|
+| Structure | Unstructured (any Python object) | Structured (rows and columns with schema) |
+| Optimization | Manual | Automatic via Catalyst optimizer |
+| Performance | Slower (no optimization) | Faster |
+| API | Functional (`map`, `filter`) | SQL-like (`select`, `groupBy`) |
+| When to use | Custom objects, complex logic, legacy code | Almost everything else |
+
+> RDDs are still important to understand because DataFrames are built on top of them, and knowing RDDs helps you reason about what Spark is doing under the hood.
+
+---
+
 ## The Four Spark Libraries
 
 ### 1. Spark Streaming

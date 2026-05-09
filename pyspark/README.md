@@ -37,23 +37,70 @@ This folder is a hands-on sandbox for learning PySpark progressively. The goal i
 |------|---------|
 | Python | 3.9+ |
 | PySpark | 3.4+ |
-| Java (JDK) | 11 or 17 |
+| Java (JDK) | 17 |
+| Winutils | hadoop-3.3.5 (Windows only) |
 
-> **Tip:** Spark requires Java under the hood even when using Python. Make sure `JAVA_HOME` is set correctly.
+---
 
-### Install PySpark
+## Setup & Installation (Windows)
 
-```bash
+### Step 1 — Install Python
+
+Download the installer from 👉 https://www.python.org/downloads/
+
+During installation, make sure to check **"Add Python to PATH"** before clicking Install.
+
+Verify:
+
+```powershell
+python --version
+```
+
+### Step 2 — Install Java (JDK 17)
+
+Download the `.msi` installer from 👉 https://adoptium.net
+
+Choose **Windows x64 .msi** and run the installer.
+
+Verify:
+
+```powershell
+java -version
+```
+
+Then set `JAVA_HOME`:
+
+1. Search for **"Edit the system environment variables"** in the Start menu
+2. Click **Environment Variables**
+3. Under **System variables** → **New**:
+   - Variable name: `JAVA_HOME`
+   - Variable value: `C:\Program Files\Eclipse Adoptium\jdk-17.x.x` (adjust to your install path)
+4. Find the `Path` variable → **Edit** → **New** → add `%JAVA_HOME%\bin`
+5. Restart your terminal
+
+### Step 3 — Install Winutils
+
+Spark requires Winutils to run on Windows. Download it from 👉 https://github.com/cdarlint/winutils
+
+Download `winutils.exe` from the `hadoop-3.3.5/bin/` folder and save it to `C:\hadoop\bin`.
+
+Then add a new system environment variable:
+- Variable name: `HADOOP_HOME`
+- Variable value: `C:\hadoop`
+
+### Step 4 — Install PySpark
+
+```powershell
 pip install pyspark
 ```
 
-Or if using a virtual environment (recommended):
+### Step 5 — Verify everything works
 
-```bash
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install pyspark
+```powershell
+python -c "from pyspark.sql import SparkSession; spark = SparkSession.builder.master('local').getOrCreate(); print('OK')"
 ```
+
+If you see `OK` you are ready to run the scripts.
 
 ---
 
